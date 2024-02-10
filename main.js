@@ -42,16 +42,29 @@ function filtroBusqueda(){
     if (resultado.length >0){
         console.table(resultado)
     }else{
-        alert("No disponemos del producto "+ palabraClave)
+        Swal.fire({
+            title: "Disculpe",
+            text: "No disponemos del producto "+ palabraClave,
+            icon: "warning"
+            })
+        }
     }
-}
+
+
+const btnComprar = document.querySelector(".btnComprar");
+
+
+btnComprar.addEventListener("click", function(){
+    const tituloItem = document.querySelector(".titulo-card");
+    const productData = tituloItem.textContent;
+    let producto = new Producto(productData);
+    let carrito = localStorage.getItem('carrito');
+    let cartData = carrito ? JSON.parse(carrito) : [];
+    cartData.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(cartData));
+})
 
 
 console.log(...listaProductos)
 
 
-
-const botonComprar = document.getElementById("botonComprar")
-const itemEnventa = document.getElementsByClassName("cardJugueteria")
-
-botonComprar.addEventListener("click",()=>localStorage.setItem("nombre",itemEnventa.value))
