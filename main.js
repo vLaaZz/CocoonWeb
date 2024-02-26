@@ -51,20 +51,101 @@ function filtroBusqueda(){
     }
 
 
-const btnComprar = document.querySelector(".btnComprar");
-
-
-btnComprar.addEventListener("click", function(){
-    const tituloItem = document.querySelector(".titulo-card");
-    const productData = tituloItem.textContent;
-    let producto = new Producto(productData);
-    let carrito = localStorage.getItem('carrito');
-    let cartData = carrito ? JSON.parse(carrito) : [];
-    cartData.push(producto);
-    localStorage.setItem('carrito', JSON.stringify(cartData));
-})
-
-
 console.log(...listaProductos)
 
+fetch("productos.json")
+.then(response => response.json())
+.then(data=>{
 
+const articulos = data.articulos
+
+const articulosContainer = document.getElementById("articulosContainer")
+const verCarrito = document.getElementById("ver-carrito")
+verCarrito.className ="ver-carrito"
+const modalContainer = document.getElementById("modal-container")
+modalContainer.className ="modal-container"
+
+let carrito =[]
+
+articulos.forEach(articulo => {
+    const articuloContainer =document.createElement("div");
+    articuloContainer.className = "articuloContainer";
+
+    const articuloElement = document.createElement("p");
+    articuloElement.className = "articuloElement";
+    articuloElement.textContent = `Artículo: ${articulo.nombre} | Precio:$${articulo.precio}`;
+
+    const imagenElement = document.createElement("img");
+    imagenElement.src = articulo.imagen; 
+    imagenElement.className = "imagenArticulo";
+
+    const btnComprar = document.createElement("button");
+    btnComprar.className = "btnComprar";
+    btnComprar.textContent = "Agregar al Carrito";
+
+
+
+    btnComprar.addEventListener("click",function () {
+        carrito.push({
+            nombre: articulo.nombre,
+            precio: articulo.precio,
+            stock: articulo.stock,
+            imagen: articulo.imagen
+        });
+        console.log(carrito);
+    });
+
+    verCarrito.addEventListener("click",function () {
+        modalContainer.innerHTML = "";
+        modalContainer.style.display = "flex";
+        const modalheader = document.createElement("div");
+        modalheader.className = "modal-header";
+        modalheader.innerHTML = `<h1 class="modal-header">Carrito</h1>;`
+        modalContainer.append(modalheader);
+
+        const modalButton = document.createElement("h1");
+        modalButton.className = "modal-button";
+        modalButton.innerText = "x";
+
+        modalButton.addEventListener("click",function () {
+            modalContainer.style.display = "none";
+        });
+
+        modalheader.append(modalButton);
+
+
+        carrito.forEach((articulo) => {
+        let carritoContent = document.createElement("div");
+        carritoContent.className = "modal-content";
+        carritoContent.innerHTML = `
+        <img src="${articulo.imagen}">
+        <h3>${articulo.nombre}</h3>
+        <p>Precio: $${articulo.precio}$</p>
+        `;
+        modalContainer.append(carritoContent);
+        });
+
+        const total = carrito.reduce((acc, el) => acc + el.precio, 0);
+        
+        const totalBuying = document.createElement("div");
+        totalBuying.className = "totalContent";
+        totalBuying.innerHTML = `Total: $${total}`;
+        modalContainer.append(totalBuying);
+    });
+    
+
+    articuloContainer.append(articuloElement);
+    articuloContainer.append(btnComprar)
+    articulosContainer.appendChild(articuloContainer);
+    articuloContainer.append(imagenElement);
+});
+
+
+
+
+
+})
+
+.catch(error=>{
+    console.error("Fallaste bb")
+});

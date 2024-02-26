@@ -5,7 +5,7 @@
   justify-content: space-between;
   width: 100%;
   height: 100px;
-  position: sticky;
+  position: fixed;
   z-index: 1000;
   padding: 20px;
   backdrop-filter: blur(2px) saturate(180%);
@@ -29,7 +29,12 @@ nav ul {
 nav ul li {
   padding: 20px;
 }
-
+.ver-carrito{
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  margin-left: 500px;
+}
 .logo_IMG {
   width: 230px;
   height: 70px;
@@ -307,16 +312,8 @@ body {
 }
 
 
-.itemsEnVenta {
-  width: 100%;
-  margin: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 150px;
-  margin-bottom: 150px;
-  padding: 5px;
+#articulosContainer {
+  color: white
 }
 
 .cardJugueteria {
@@ -337,15 +334,116 @@ body {
   color: white;
 }
 
+.articuloContainer {
+  border: 5px solid white;
+  padding: 10px;
+  border-radius: 15px;
+  backdrop-filter: blur(2px) saturate(180%);
+  -webkit-backdrop-filter: blur(2px) saturate(180%);
+  background-color: rgba(41, 44, 49, 0.75);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 400px;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 100px;
+}
+
+.imagenArticulo {
+  height: 250px;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.articuloElement{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+
+.btnComprar {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.my-button:hover {
+  background-color: #45a049;
+}
+.my-button:active {
+  background-color: #3e8e41;
+}
 
 
+.ver-carrito{
+  cursor: pointer;
+}
+
+/* Modal Content */
+
+.modal-container {
+  width: 80%;
+  margin: 0 10%;
+  max-height: 88vh;
+  color: azure;
+  border: 15px;
+  background-color: black;
+  backdrop-filter: blur(2px) saturate(180%);
+  -webkit-backdrop-filter: blur(2px) saturate(180%);
+  background-color: rgba(41, 44, 49, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  z-index: 9;
+  top: 12vh;
+  scrollbar-color: none;
+}
+
+.modal-container::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  color: azure;
+  width: 100%;
+}
+
+.modal-button {
+  cursor: pointer;
+}
+
+.modal-container > .modal-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+}
+
+.modal-container > div > img {
+  height: 120px;
+  width: 120px;
+  border-radius: 15px;
+}
+.totalContent {
+  font-size: 25px;
+  padding: 20px;
+  text-align: center;
+  padding-top: 20px;
 
 
-
-
-
-
-
+  
+}
 @media (max-width: 1600px) {
   .container-full-productos {
     justify-content: center;

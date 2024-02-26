@@ -1,0 +1,63 @@
+    {"articulos":[
+    {
+        "nombre": "Libreta Moleskine",
+        "precio": 16.00,
+        "stock": 20,
+        "imagen": "../images/libreta-moleskine.jpg"
+    },
+    {
+        "nombre": "Auriculares Bluetooth Samsung",
+        "precio": 40.00,
+        "stock": 15,
+        "imagen": "../images/auriculares-inalambricos.jpg"
+    },
+    {
+        "nombre": "Funda para iPhone",
+        "precio": 10.00,
+        "stock": 30,
+        "imagen": "../images/funda-iphone.png"
+    },
+    {
+        "nombre": "Rompecabezas de 1000 piezas",
+        "precio": 25.00,
+        "stock": 10,
+        "imagen": "../images/rompecabezas.jpg"
+    },
+    {
+        "nombre": "Bolígrafos de Gel",
+        "precio": 3.00,
+        "stock": 50,
+        "imagen": "../images/boligrafos.jpg"
+    },
+    {
+        "nombre": "Cargador portátil",
+        "precio": 20.00,
+        "stock": 25,
+        "imagen": "../images/cargador-portatil.jpg"
+    },
+    {
+        "nombre": "Set de marcadores de colores",
+        "precio": 8.00,
+        "stock": 40,
+        "imagen": "../images/set-colores.jpg"
+    },
+    {
+        "nombre": "Robot educativo para niños",
+        "precio": 30.00,
+        "stock": 12,
+        "imagen": "../images/robot.jpg"
+    },
+    {
+        "nombre": "Estuche para lápices",
+        "precio": 6.00,
+        "stock": 35,
+        "imagen": "../images/set-lapices.jpg"
+    },
+    {
+        "nombre": "Juego de mesa familiar",
+        "precio": 20.00,
+        "stock": 20,
+        "imagen": "../images/juego-mesa.jpg"
+    }
+    ]
+}
