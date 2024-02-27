@@ -1,63 +1,83 @@
     {"articulos":[
     {
+        "id":1,
         "nombre": "Libreta Moleskine",
         "precio": 16.00,
         "stock": 20,
-        "imagen": "../images/libreta-moleskine.jpg"
+        "imagen": "../images/libreta-moleskine.jpg",
+        "cantidad":1
     },
     {
+        "id":2,
         "nombre": "Auriculares Bluetooth Samsung",
         "precio": 40.00,
         "stock": 15,
-        "imagen": "../images/auriculares-inalambricos.jpg"
+        "imagen": "../images/auriculares-inalambricos.jpg",
+        "cantidad":1
     },
     {
+        "id":10,
         "nombre": "Funda para iPhone",
         "precio": 10.00,
         "stock": 30,
-        "imagen": "../images/funda-iphone.png"
+        "imagen": "../images/funda-iphone.png",
+        "cantidad":1
     },
     {
+        "id":3,
         "nombre": "Rompecabezas de 1000 piezas",
         "precio": 25.00,
         "stock": 10,
-        "imagen": "../images/rompecabezas.jpg"
+        "imagen": "../images/rompecabezas.jpg",
+        "cantidad":1
     },
     {
+        "id":4,
         "nombre": "Bolígrafos de Gel",
         "precio": 3.00,
         "stock": 50,
-        "imagen": "../images/boligrafos.jpg"
+        "imagen": "../images/boligrafos.jpg",
+        "cantidad":1
     },
     {
+        "id":5,
         "nombre": "Cargador portátil",
         "precio": 20.00,
         "stock": 25,
-        "imagen": "../images/cargador-portatil.jpg"
+        "imagen": "../images/cargador-portatil.jpg",
+        "cantidad":1
     },
     {
+        "id":6,
         "nombre": "Set de marcadores de colores",
         "precio": 8.00,
         "stock": 40,
-        "imagen": "../images/set-colores.jpg"
+        "imagen": "../images/set-colores.jpg",
+        "cantidad":1
     },
     {
+        "id":7,
         "nombre": "Robot educativo para niños",
         "precio": 30.00,
         "stock": 12,
-        "imagen": "../images/robot.jpg"
+        "imagen": "../images/robot.jpg",
+        "cantidad":1
     },
     {
+        "id":8,
         "nombre": "Estuche para lápices",
         "precio": 6.00,
         "stock": 35,
-        "imagen": "../images/set-lapices.jpg"
+        "imagen": "../images/set-lapices.jpg",
+        "cantidad":1
     },
     {
+        "id":9,
         "nombre": "Juego de mesa familiar",
         "precio": 20.00,
         "stock": 20,
-        "imagen": "../images/juego-mesa.jpg"
+        "imagen": "../images/juego-mesa.jpg",
+        "cantidad":1
     }
     ]
 }

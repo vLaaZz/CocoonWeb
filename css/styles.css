@@ -351,6 +351,11 @@ body {
   margin-bottom: 100px;
 }
 
+.carritoCompras {
+  padding: 10px;
+  border-radius: 15px;
+}
+
 .imagenArticulo {
   height: 250px;
   width: 300px;
@@ -379,6 +384,9 @@ body {
   background-color: #3e8e41;
 }
 
+.delete-product {
+  cursor: pointer;
+}
 
 .ver-carrito{
   cursor: pointer;
@@ -419,6 +427,16 @@ body {
 }
 
 .modal-button {
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.botonComprarCarrito {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 

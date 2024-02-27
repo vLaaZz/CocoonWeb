@@ -65,7 +65,7 @@ verCarrito.className ="ver-carrito"
 const modalContainer = document.getElementById("modal-container")
 modalContainer.className ="modal-container"
 
-let carrito =[]
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 articulos.forEach(articulo => {
     const articuloContainer =document.createElement("div");
@@ -86,53 +86,110 @@ articulos.forEach(articulo => {
 
 
     btnComprar.addEventListener("click",function () {
-        carrito.push({
+
+    const repeat = carrito.some((repeatProduct) => repeatProduct.id === articulo.id)
+    if (repeat){
+        carrito.map((prod) =>{
+            if (prod.id === articulo.id){
+                prod.cantidad++;
+            }
+        });
+    } else {
+            carrito.push({
             nombre: articulo.nombre,
             precio: articulo.precio,
             stock: articulo.stock,
-            imagen: articulo.imagen
-        });
+            imagen: articulo.imagen,
+            id:articulo.id,
+            cantidad:1
+            });
+            guardarItems();
+        }
         console.log(carrito);
     });
 
-    verCarrito.addEventListener("click",function () {
-        modalContainer.innerHTML = "";
-        modalContainer.style.display = "flex";
-        const modalheader = document.createElement("div");
-        modalheader.className = "modal-header";
-        modalheader.innerHTML = `<h1 class="modal-header">Carrito</h1>;`
-        modalContainer.append(modalheader);
-
-        const modalButton = document.createElement("h1");
-        modalButton.className = "modal-button";
-        modalButton.innerText = "x";
-
-        modalButton.addEventListener("click",function () {
-            modalContainer.style.display = "none";
-        });
-
-        modalheader.append(modalButton);
 
 
-        carrito.forEach((articulo) => {
-        let carritoContent = document.createElement("div");
-        carritoContent.className = "modal-content";
-        carritoContent.innerHTML = `
-        <img src="${articulo.imagen}">
-        <h3>${articulo.nombre}</h3>
-        <p>Precio: $${articulo.precio}$</p>
-        `;
-        modalContainer.append(carritoContent);
-        });
 
-        const total = carrito.reduce((acc, el) => acc + el.precio, 0);
-        
-        const totalBuying = document.createElement("div");
-        totalBuying.className = "totalContent";
-        totalBuying.innerHTML = `Total: $${total}`;
-        modalContainer.append(totalBuying);
+
+const pintarCarrito = () => {
+    modalContainer.innerHTML = "";
+    modalContainer.style.display = "flex";
+    const modalheader = document.createElement("div");
+    modalheader.className = "modal-header";
+    modalheader.innerHTML = `<h1 class="modal-header">Carrito</h1>;`
+    modalContainer.append(modalheader);
+
+    const modalButton = document.createElement("h1");
+    modalButton.className = "modal-button";
+    modalButton.innerText = "❌";
+
+    modalButton.addEventListener("click",function () {
+        modalContainer.style.display = "none";
     });
+
+    modalheader.append(modalButton);
+
+
+    carrito.forEach((articulo) => {
+    let carritoContent = document.createElement("div");
+    carritoContent.className = "modal-content";
+    carritoContent.innerHTML = `
+    <div class="carritoCompras">
+    <img src="${articulo.imagen}">
+    <h3>${articulo.nombre}</h3>
+    <p>Precio: $${articulo.precio}$</p>
+    <p>Cantidad: ${articulo.cantidad}</p>
+    </div>
+    `;
+    modalContainer.append(carritoContent);
+
+    let eliminar = document.createElement("span");
+    eliminar.innerText = "❌";
+    eliminar.className = "delete-product";
+    carritoContent.append(eliminar);
+    eliminar.addEventListener("click", eliminarProducto);
+    });
+
+    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
     
+    const totalBuying = document.createElement("div");
+    totalBuying.className = "totalContent";
+    totalBuying.innerHTML = `Total: $${total}`;
+    modalContainer.append(totalBuying);
+
+    const comprarCarrito = document.createElement("span");
+comprarCarrito.className = "botonComprarCarrito";
+modalContainer.append(comprarCarrito);
+comprarCarrito.textContent = "Comprar";
+
+comprarCarrito.addEventListener("click", () => {
+    if (carrito.length > 0) {
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Gracias por su compra, se ha enviado a su mail los datos para realizar el pago",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    } else {
+        return;
+    }
+});
+}
+
+verCarrito.addEventListener("click", pintarCarrito);
+
+const eliminarProducto = () => {    
+    const foundId = carrito.find((element)=>element.id);
+
+    carrito = carrito.filter((carritoId)=>{
+        return carritoId !== foundId;
+    });
+
+pintarCarrito();
+};
+
 
     articuloContainer.append(articuloElement);
     articuloContainer.append(btnComprar)
@@ -141,11 +198,13 @@ articulos.forEach(articulo => {
 });
 
 
+const guardarItems = () => {
+    localStorage.setItem("carrito", jSON.stringify(carrito));
+    };
 
 
 
 })
-
 .catch(error=>{
     console.error("Fallaste bb")
 });
